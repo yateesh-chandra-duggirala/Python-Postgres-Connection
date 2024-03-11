@@ -25,4 +25,4 @@
 ### 3. Creating Table :
 - Let us execute the CREATE TABLE query using execute() method.
 - Before that we have to execute another query DROP Table If exists if we want to create a new table instead of the old one.
-- View the [table-creation.py](https://github.com/yateesh-chandra-duggirala/Python-Postgres-Connection/blob/master/table-creation.py)https://github.com/yateesh-chandra-duggirala/Python-Postgres-Connection/blob/master/table-creation.py to understand the working.
+- View the [table-creation.py](https://github.com/yateesh-chandra-duggirala/Python-Postgres-Connection/blob/master/table-creation.py) to understand the working.
