@@ -20,16 +20,16 @@
 - A cursor object can be created using the cursor() method of the connection class.
 - The execute() method of this class accepts a postgresql query as a parameter and executes it.
 - In order to create a database in postgreSQL execute the CREATE DATABASE query using this method.
-- Refer the [database-creation.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/database_creation.py) script
+- Refer the [database_creation.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/database_creation.py) script
 
 ### 3. Creating Table :
 - Let us execute the CREATE TABLE query using execute() method.
 - Before that we have to execute another query DROP Table If exists if we want to create a new table instead of the old one.
-- View the [table-creation.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/table_creation.py) to understand the working.
+- View the [table_creation.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/table_creation.py) to understand the working.
 
 ### 4. Inserting Rows :
 - We have to execute the INSERT Query using the execute() method.
-- For clear info, Have a look at the [insertion-script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/insertion_script.py) script.
+- For clear info, Have a look at the [insertion_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/insertion_script.py) script.
 
 ### 5. Retrieving Data :
 - Read Operation means to fetch some information from the database.
@@ -39,9 +39,24 @@ a. fetchall() - This method retrieves all the rows in the result set of query an
 b. fetchone() - This method fetches the next row in the result of a query and returns it as a tuple.
 c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next set of rows in the result set of a query, instead of a single row.
 **A Result Set is an object that is returned when a cursor object is used to query a table.**
-- Refer to the [select-statement.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/select_statement.py)
+- Refer to the [select_statement.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/select_statement.py)
 
 ### 6. Where Clause using Python
 - To fetch the specific records from a table using the python program execute the select statement with WHERE Clause, by passing it as a parameter to the execute() method.
-- Go to [conditional-select.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/conditional_select.py) script to learn the steps.
+- Go to [conditional_select.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/conditional_select.py) script to learn the steps.
 
+### 7. Update Script using Python
+- To update the records from the table, you can just execute the update statement by passing it as a parameter to the execute() method.
+- View the [update_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/update_script.py) for a better understanding
+
+### 8. Delete Script using Python
+- To Delete the records from the table, you can just execute the Delete statement by passing the query as a parameter to the execute() method.
+- Once view the [delete_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/delete_script.py) to know the concept better.
+
+### 9. Drop Table
+- To drop the table from the table, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
+- Have a look at the [drop_table.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/drop_table.py).
+
+### 10. Limit The Rows
+- To Limit the Rows or even Offset in that aspect from a table, we can just execute the Query with limit and offset keywords as a parameter to the execute() method
+- Go through the [select_limit.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/select_limit.py)
