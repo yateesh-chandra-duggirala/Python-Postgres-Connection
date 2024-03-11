@@ -60,3 +60,33 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 ### 10. Limit The Rows
 - To Limit the Rows or even Offset in that aspect from a table, we can just execute the Query with limit and offset keywords as a parameter to the execute() method
 - Go through the [select_limit.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/select_limit.py)
+
+### 11. Join Tables
+- We can also run the join condition over two tables and execute by Passing that Query as Parameter to the execute() method
+- Study the [join.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/join.py) carefully.
+
+## Cursor Object :
+- The Cursor class of the psycopg library provide methods to execute the PostgreSQL commands in the database using python code.
+- Using the methods of it you can execute SQL statements, fetch data from the result sets, call procedures.
+- You can create Cursor object using the cursor() method of the Connection object/class.
+- Look into [cursor.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/cursor.py)
+
+### a. Methods provided by cursor class/ Object.
+
+1. callProc : This method is used to call existing procedures PostgreSQL database.
+2. close() : This method is used to close the current cursor object.
+3. executemany() : This method accepts a list series of parameters list. Prepares a query and executes it with all the parameters.
+4. execute() : This method accepts a query as a parameter and executes the given query.
+5. fetchall() : This method retrieves all the rows in the result set of a query and returns them as list of tuples.
+6. fetchone() : This method fetches the next row in the result of a query and returns it as a tuple.
+7. fetchmany() : This method is similar to the fetchone() but, it retrieves the next set of rows in the result set of a query, instead of a single row.
+
+### b. Properties of cursor Object :
+
+1. description : This is a read only property which returns the list containing the description of columns in a result-set.
+2. astrowid : This is a read only property, if there are any auto-incremented columns in the table, this returns the value generated for that column in the last INSERT or, UPDATE operation.
+3. rowcount : This returns the number of rows returned/updated in case of SELECT and UPDATE operations.
+4. closed : This property specifies whether a cursor is closed or not, if so it returns true, else false.
+5. connection : This returns a reference to the connection object using which this cursor was created.
+6. name : This property returns the name of the cursor.
+7. scrollable : This property specifies whether a particular cursor is scrollable.
