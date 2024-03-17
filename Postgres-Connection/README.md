@@ -45,23 +45,27 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 - To fetch the specific records from a table using the python program execute the select statement with WHERE Clause, by passing it as a parameter to the execute() method.
 - Go to [conditional_select.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/conditional_select.py) script to learn the steps.
 
-### 7. Update Script using Python
+### 7. Order by Using Python 
+- To retreive The records in a desired order we write the Query that sorts the order of the items to be fetched accordingly and pass it as a parameter to the execute() Method.
+- Refer into [order_by.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/mysql-connection/Postgres-Connection/order_by.py) script once.
+
+### 8. Update Script using Python
 - To update the records from the table, you can just execute the update statement by passing it as a parameter to the execute() method.
 - View the [update_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/update_script.py) for a better understanding
 
-### 8. Delete Script using Python
+### 9. Delete Script using Python
 - To Delete the records from the table, you can just execute the Delete statement by passing the query as a parameter to the execute() method.
 - Once view the [delete_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/delete_script.py) to know the concept better.
 
-### 9. Drop Table
+### 10. Drop Table
 - To drop the table from the table, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
 - Have a look at the [drop_table.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/drop_table.py).
 
-### 10. Limit The Rows
+### 11. Limit The Rows
 - To Limit the Rows or even Offset in that aspect from a table, we can just execute the Query with limit and offset keywords as a parameter to the execute() method
 - Go through the [select_limit.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/select_limit.py)
 
-### 11. Join Tables
+### 12. Join Tables
 - We can also run the join condition over two tables and execute by Passing that Query as Parameter to the execute() method
 - Study the [join.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/join.py) carefully.
 
@@ -73,7 +77,7 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 
 ### a. Methods provided by cursor class/ Object.
 
-1. callProc : This method is used to call existing procedures PostgreSQL database.
+1. callProc() : This method is used to call existing procedures PostgreSQL database.
 2. close() : This method is used to close the current cursor object.
 3. executemany() : This method accepts a list series of parameters list. Prepares a query and executes it with all the parameters.
 4. execute() : This method accepts a query as a parameter and executes the given query.
@@ -84,7 +88,7 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 ### b. Properties of cursor Object :
 
 1. description : This is a read only property which returns the list containing the description of columns in a result-set.
-2. astrowid : This is a read only property, if there are any auto-incremented columns in the table, this returns the value generated for that column in the last INSERT or, UPDATE operation.
+2. lastrowid : This is a read only property, if there are any auto-incremented columns in the table, this returns the value generated for that column in the last INSERT or, UPDATE operation.
 3. rowcount : This returns the number of rows returned/updated in case of SELECT and UPDATE operations.
 4. closed : This property specifies whether a cursor is closed or not, if so it returns true, else false.
 5. connection : This returns a reference to the connection object using which this cursor was created.
