@@ -58,7 +58,7 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 - Once view the [delete_script.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/delete_script.py) to know the concept better.
 
 ### 10. Drop Table
-- To drop the table from the table, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
+- To drop the table from the database, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
 - Have a look at the [drop_table.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/master/Postgres-Connection/drop_table.py).
 
 ### 11. Limit The Rows
