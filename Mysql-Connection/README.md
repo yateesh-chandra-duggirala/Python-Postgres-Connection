@@ -67,7 +67,7 @@ c. fetchMany() - This method is similar to fetchOne() but, it retrieves the next
 - Study the [join.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/mysql-connection/Mysql-Connection/join.py) carefully.
 
 ### 12. Drop Table
-- To drop the table from the database, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
+- To drop the table from the Database, you can just execute the DROP TABLE Query by passing it as a parameter to the execute() method.
 - Have a look at the [drop_table.py](https://github.com/yateesh-chandra-duggirala/Python-Database-Connection/blob/mysql-connection/Mysql-Connection/drop_table.py).
 
 
