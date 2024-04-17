@@ -150,4 +150,25 @@ c. Integer / String - these classes represent SQL Datatypes and can be passed to
 ## Emitting DDL to the Database from an ORM Mapping :
 - As our ORM mapped classes refer to Table objects contained within a Metadata Collection, emmitting DDL given the Declarative Base uses the same process as that described previously at Emitting DDL to the Database.
 - We have generated the user and address tables in our Database.
-- if we had not done so already, we would be free to make use of the Metadata associated with our ORM Declarative Base Class in order to do so, by accessing the collection from the DeclarativeBase.metadata attribute and then using Metadata.create_all() as before
+- if we had not done so already, we would be free to make use of the Metadata associated with our ORM Declarative Base Class in order to do so, by accessing the collection from the DeclarativeBase.metadata attribute and then using Metadata.create_all() as before.
+
+## Working with Data :
+    Let us understand how the Various Manipulation Commands work.
+### Insert Statements :
+- When using Core as well as when using the ORM for bulk operations, a SQL Insert Statement is generated directly using the insert() function. This function generates a new instance of Insert which represents an INSERT Statement in SQL, that adds new data into a table.
+
+a. The insert() SQL Expression Construct :
+- We create a variable that is an instance of Insert.
+- most SQL Expressions can be stringified in place as a means to see the general form of what is being produced.
+- Execute the query.
+
+b. insert Many :
+- We can pass multiple parameters through the form of list of dictionaries.
+- The connection ensures that column names which are passed will be expressed in the values clause of the insert statement automatically.
+
+### Scalar Subquery : 
+- A Scalar Subquery is constructed, making use of the select() method and the parameters used in the Sub-Query are set up using an explicit bound parameter name, established using bindparam() construct.
+
+c. Insert Returning : 
+- The RETURNING Clause for supported backends is used automatically in order to retrieve the last inserted primary key value as well as the values for server defaults.
+- However the Returning clause may also be specified explicitly using the insert.returning
