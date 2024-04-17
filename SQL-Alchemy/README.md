@@ -126,3 +126,28 @@ c. Integer / String - these classes represent SQL Datatypes and can be passed to
 - The most expedient way to acquire a new Declarative Base is to create a new class that subclasses the SQLAlchemy DeclarativeBase Class.
 - Registry refers to the collection called collection, which is the central mapper configuration unit in the SQLAlchemy.
 - Registry is automatically created by Declarative Base itself.
+
+## Declaring Mapped Classes : 
+- After establishing the Base Class, we can define ORM Mapped Classes for the user_account and address tables in terms of new classes User and Address.
+- We illustrate below the most of the modern form of declarative, which is driven from type annotations using a special type Mapped, which indicates attributes to be mapped as particular types.
+
+### Once go through the mapped_class.py and understand the below observations.
+- The 2 classes User and Accounts are called as ORM Mapped Classes and are available for use in ORM persistence and Query Operations.
+- Each class refers to a Table object that was generated as part of the declarative mapping process, which is named by assigning a string to the DeclarativeBase.__tablename__ attribute. Once the class is created, this generated Table is available from the DeclarativeBase.__table__. This is called Declarative Table Configuration.
+- One of the several alternative declaration would have us build the Table object directly, and assign it directly to DeclarativeBase.__table__ , This method is known as Declarative with Imperative Table.
+- To indicate columns in the table, we use the mapped_column() construct, in combination with typing annotations based on the Mapped Type.
+- This object will generate Column objects that are applied to the construction of the table.
+- For columns with simple datatypes and no other options, we can indicate a Mapped type annotation alone, using Simple Python types like int and str to mean Integer and String.
+- Customization of how Python Types are interpreted within the Declarative mapping process is very open ended.
+- A column is made nullable by making it Optional['<type>']. Also we can explicitly mention mapped_column(nullable = True)
+- Two additional attributes User.addresses and Address.user, define a different kind of attribute called relationship(), which features similar annotation-aware configuration style as shown.
+- The classes are automatically given an __init__() method if we do not declare on our own.
+- To automatically generate a full-featured __init__() method which provides for positional arguments as well as arguments with default keyword values, the dataclasses feature introduces at Declarative DataClass Mapping may be used.
+- It is of course always an option to use an explicit __init__() method as well.
+- The __repr__() methods are added so that we get a readable string output; there is no requirement for these methods to be here.
+- As is the case with __init__(), a __repr__() method can be generated automatically by using the dataclasses feature.
+
+## Emitting DDL to the Database from an ORM Mapping :
+- As our ORM mapped classes refer to Table objects contained within a Metadata Collection, emmitting DDL given the Declarative Base uses the same process as that described previously at Emitting DDL to the Database.
+- We have generated the user and address tables in our Database.
+- if we had not done so already, we would be free to make use of the Metadata associated with our ORM Declarative Base Class in order to do so, by accessing the collection from the DeclarativeBase.metadata attribute and then using Metadata.create_all() as before
