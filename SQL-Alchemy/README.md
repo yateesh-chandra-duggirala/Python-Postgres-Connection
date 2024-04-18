@@ -166,9 +166,12 @@ b. insert Many :
 - We can pass multiple parameters through the form of list of dictionaries.
 - The connection ensures that column names which are passed will be expressed in the values clause of the insert statement automatically.
 
-### Scalar Subquery : 
+#### Scalar Subquery : 
 - A Scalar Subquery is constructed, making use of the select() method and the parameters used in the Sub-Query are set up using an explicit bound parameter name, established using bindparam() construct.
 
 c. Insert Returning : 
 - The RETURNING Clause for supported backends is used automatically in order to retrieve the last inserted primary key value as well as the values for server defaults.
-- However the Returning clause may also be specified explicitly using the insert.returning
+- However the Returning clause may also be specified explicitly using the insert.returning.
+
+### Select Statement :
+- For both Core and ORM, the select() function generates a Select construct which is used for all SELECT queries. Passed to Methods like Connection.execute() in Core and Session.execute() in ORM, A Select statement is emitted in the current transaction and the result rows available via the returned Result object.
