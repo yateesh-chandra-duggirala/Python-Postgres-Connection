@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine,MetaData, Table, select, String
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session
-from typing import List, Optional
+from sqlalchemy import create_engine,MetaData, select, String
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session
+from typing import Optional
 
 engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost/db")
 

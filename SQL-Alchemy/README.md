@@ -175,3 +175,7 @@ c. Insert Returning :
 
 ### Select Statement :
 - For both Core and ORM, the select() function generates a Select construct which is used for all SELECT queries. Passed to Methods like Connection.execute() in Core and Session.execute() in ORM, A Select statement is emitted in the current transaction and the result rows available via the returned Result object.
+- label is used with select but serves as alias in SQL.
+- We are being provided the order_by method which works similar to the order by concept in SQL.
+- literal_column is same as text() construct except that instead of representing arbitrary SQL of any form , it explicitly represents a single column and can be labelled towards in subqueries and expressions.
+- AND Statement can be invoked using multiple where statements.
