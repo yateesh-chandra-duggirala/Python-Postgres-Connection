@@ -179,3 +179,17 @@ c. Insert Returning :
 - We are being provided the order_by method which works similar to the order by concept in SQL.
 - literal_column is same as text() construct except that instead of representing arbitrary SQL of any form , it explicitly represents a single column and can be labelled towards in subqueries and expressions.
 - AND Statement can be invoked using multiple where statements.
+- We can Join the tables using join_from in select, which requires the 2 table names in which the join has to be performed
+- join() is used from select, which needs any table as an argument and indicates only right side of the join, left side is inferred.
+- also we can join table with `select().select_from(table1).join(table2, table1.col == table2.col)`
+- we can also use attributes like : isouter = True/ False and full = True / False.
+- order_by() can be used with select() in order to order the items. For Descending : order_by(field.desc())
+- group_by() can be used with select(), but when we want to use count() from func.
+- similarly, group_by can be followed by having clause()
+- aliases can be done with the help of alias() method.
+- ORM Entity has aliased() function, which may be applied to an entity such as user_account and address.
+- We can use CTEs with the help of cte() and subqueries with the help of subquery().
+
+### Working with SQL Functions :
+- The func object also provides the various functions 
+- func.lower() returns the lower case of the string passed as query.
