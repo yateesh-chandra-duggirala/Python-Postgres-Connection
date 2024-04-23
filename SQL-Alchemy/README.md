@@ -193,3 +193,8 @@ c. Insert Returning :
 ### Working with SQL Functions :
 - The func object also provides the various functions 
 - func.lower() returns the lower case of the string passed as query.
+
+### Update Statement :
+- update() construct is used to update the values from the table.
+- The statement that has to be written in set phrase will be written in values() phrase
+- And the condition that we write in the where clause will be written as usual.
