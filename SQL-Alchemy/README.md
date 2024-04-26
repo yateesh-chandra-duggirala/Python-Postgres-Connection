@@ -198,3 +198,30 @@ c. Insert Returning :
 - update() construct is used to update the values from the table.
 - The statement that has to be written in set phrase will be written in values() phrase
 - And the condition that we write in the where clause will be written as usual.
+
+## Data Manipulation with ORM :
+- Let us build out the life cycle of the session and how it interacts with these constructs
+
+### Inserting Rows using ORM Unit of Work Pattern : 
+- When using ORM, Session object is responsible for constructing Insert Statements and emit them as INSERT Statements within the ongoing transactions.
+- The way we instruct the session to do so is by adding object entries to it; The session then makes sure these new entries will be emitted to Database when they are needed. This is called as flush.
+- The overall process used by the Session to persist objects known as unit of work pattern.
+
+### Instance of Classes represent rows : 
+- At the class level, The User and Address are served as a place to define what the corresponding database tables should look like.
+- These classes also serve as extensible data objects each representing a Potential Database row to be inserted.
+- We can create the objects for the class with the mapped columns as keyword arguments in the construct.
+- We need not manually create as the Class includes an automatically generated __init__() constructor that was provided by the ORM mapping so that we could create each object using the column name as keys in the constructor.
+- Once an object is created from a class, It is said to be in transient state until and unless it is associated with any database state and are yet to be associated with a session object that can generate INSERT Statements for them.
+-  Create a Session and add the objects using add() method.
+- When we have Pending objects, we can see this state by looking at a collection on the Session called Session.new
+- The Session makes use of a pattern known as unit of work. This generally means it accumulates changes one at a time, but does not actually communicate them to database till needed. This allows it to make better decisions about how SQL DML should be emitted in the transaction based on the given set of pending changes.
+- When it does emit SQL to the database to push out the current set of changes, the process is known as flush.
+- We can commit() or rollback() over the session.
+- We can get objects by primary key from the identity map
+- Identity map is an in-memory store that links all objects currently loaded in memory to their primary key identity.
+- We can observe this by retrieving one of the above objects using the session.get() method, which will return an entry from the identity map if locally present, otherwise emitting a select.
+- Updating ORM objects. we can do in two ways.
+- The primary way is that it is emitted automatically as part of the unit of work process used by the session, where an Update statement is emitted in a per primary key basis corresponding to individual objects that have changes on them.
+- Supposing we loaded the User object for the username into a transaction.
+- it is a good thing to close the session after the work done.

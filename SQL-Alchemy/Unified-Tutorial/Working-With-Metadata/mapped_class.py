@@ -28,7 +28,7 @@ class Address(Base):
     email : Mapped[str]
     user_id = mapped_column(ForeignKey("user_account.id"))
 
-    user : Mapped[User] = relationship(back_populates="addresses")
+    user : Mapped[User] = relationship(back_populates="address")
 
     def __repr__(self) -> str:
         return f"Address(id = {self.id!r}, email = {self.email!r})"
