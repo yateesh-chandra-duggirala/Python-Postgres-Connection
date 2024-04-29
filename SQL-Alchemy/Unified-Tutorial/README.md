@@ -225,3 +225,51 @@ c. Insert Returning :
 - The primary way is that it is emitted automatically as part of the unit of work process used by the session, where an Update statement is emitted in a per primary key basis corresponding to individual objects that have changes on them.
 - Supposing we loaded the User object for the username into a transaction.
 - it is a good thing to close the session after the work done.
+
+## Working with ORM Related Objects :
+- The mapped class examples made use of a construct called relationship().
+- This construct defines a linkage between two different mapped classes, or a mapped class to itself, the latter of which is called a self-referential relationship
+- The relationship construct, in conjunction with the mapped construct to indicate typing behavior, will be used to inspect the table relationships between the Table objects that are mapped to the User and Address Classes.
+- As the Table object representing the address table has a foreign key constraint which refers to the user_account table, the relationship() can determine unambiguously that there is a one to many relationship from the User class to the Address class, along the User.addresses relationship; one particular row in the user_account table may be referenced by many rows in the address table.
+- The one to many relationships naturally correspond to a many to one relationship in the other direction, in this case the one noted by Address.user.
+- The relationship.back_populates parameter, seen above configured on both relationship() objects referring to the other name, established that each of these two relationship() constructs should be considered to be complimentary to each other. 
+- The Synchronization occurs when we try to fix the addresses from the User Class itself. Refer to persisiting-relationship.py code
+
+### Cascading objects into the session : 
+- Until the objects that are created associate with the Session, they are said to be in Transient State.
+- After creating a session and when we apply session.add() method to the lead User object, the related Address object also gets added to that same Session.
+- the above behavior, where the session received a User object, and followed along the User.addresses relationship to locate a related Address object is known as the Save-update cascade.
+
+### Using Relationships in Queries : 
+- We can simply join the table from the select claus.
+- In order to describe how to join the tables, these methods either infer the ON Clause based on the presence of a single unambiguous ForeignKeyConstraint object within in the table metadata structure that links two tables, or otherwise we may provide an explicit SQL Expressions construct that indicates a specific ON Clause.
+- The Presence of an ORM relationship() on a mapping is not used by Select.join() or Select.join_from() to infer the ON Clause if we do not specify it.
+- This means, if we join from user to address without an ON clause, it works because of the ForeignKeyConstraint between the two mapped Table objects, not because of the relationship() objects on the user and address classes.
+
+### Loader Strategies : 
+- When we work with the instances of mapped objects, accessing the attributes that are mapped using relationship() in the default case will emit a lazy load when the collection is not populated in order to load the objects that should be present in this collection.
+- Lazy Loading is one of the most famous ORM patterns and is also the one of the most controversial.
+- When several dozen ORM objects in memory each refer to a handful of unloaded attributes, routing manipulation of these objects can spin off many additional queries that can add up(otherwise known as the N Plus one problem) and to make matters worse they are emitted implicitly.
+- These implicit queries may not be noticed, may cause errors when they are attempted after there is no longer a database transaction available, or when using the alternative concurrency patterns such as asyncio, they actually will not work at all.
+- Lazy loading is a vastly popular and useful pattern when it is compatible with the concurrency approach in use and is not otherwise causing problems.
+- For those reasons, SQL Alchemy's ORM places a lot of emphasis on being able to control and optimize this loading behavior.
+- Above all, the first step in using ORM Lazy loading effectively is to test the application, turn on SQL echoing, and watch the SQL that is emmitted.
+
+1. Selectin Load :
+- If there seems to be lots of reduntant SELECT Statements that look very much like they could be rolled into one much more efficiently, if there are loads occurring inappropriately for objects that have been detached from their Session. That is when to look into using loader strategies.
+- Loader Strategies are represented as objects that may be associated with a select statement using the select.options() method.
+- or else, we can directly include the load strategy in the relationship() construct
+
+2. Joined Load :
+- Joined Load() eager load strategy is the oldest eager loader in SQL Alchemy  which augments the SELECT statement that is being passed to the database with a join which can then load in related objects.
+- The joinedload() strategy is best suited towards loading related many-to-one objects, as this is only require that additional columns are added to a primary key entity rows that would be fetched in any case.
+- For greater efficiency, it also accepts an option joinedload.innerjoin so that an inner join instead of an outer join instead of an outer join may be used for a case such as below where we know that all Address objects have an associated User.
+
+3. Explicit Join + Eager Load :
+- if we were load address rows while joining to the user_account table using the method such as Select.join() to render the join, we could also leverage that JOIN in order to eagerly load the contents of the Address.user attribute on each address object returned.
+- This is essentially that we are using "Joined eager loading" but rendering the JOIN ourselves. 
+- this common use case is acheived by using contains_eager() option.
+- This option is very similar to joined load(), except that it assumes we have set up the Join ourselves and it instead only indicates thay additional columns in the Columns clause should be loaded into related attributes on each returned object
+
+4. RaiseLoad : 
+- This option is used to completely block an application from having N Plus one problem at all by causing what would normally be a lazy load to raise an error instead.
